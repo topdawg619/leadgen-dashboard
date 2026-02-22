@@ -63,16 +63,16 @@
       <span class="icon">AG</span>
       RapidScale Leads
     </div>
-    <ul>
-      <li class="active"><span class="icon">🏠</span>Dashboard</li>
-      <li><span class="icon">🧲</span>Leads</li>
-      <li><span class="icon">📨</span>Digests</li>
-      <li><span class="icon">📑</span>Briefs</li>
-      <li><span class="icon">⚙️</span>Settings</li>
-    </ul>
+    <ul class="nav-links">
+      <a href="#dashboard"><span class="icon">🏠</span>Dashboard</a>
+      <a href="#leads"><span class="icon">🧲</span>Leads</a>
+      <a href="#digests"><span class="icon">📨</span>Digests</a>
+      <a href="#briefs"><span class="icon">📑</span>Briefs</a>
+      <a href="#settings"><span class="icon">⚙️</span>Settings</a>
+</ul>
   </nav>
 
-  <main class="main">
+  <main class="main" id="dashboard">
     <header>
       <div>
         <h1>RapidScale LeadGen Command</h1>
@@ -84,7 +84,7 @@
     <div class="kpi-grid" id="stats"></div>
 
     <div class="content-grid">
-      <section>
+      <section id="leads">
         <h2>Open Leads</h2>
         <div class="leads-list" id="leads"></div>
       </section>
@@ -95,15 +95,19 @@
     </div>
 
     <div class="content-grid">
-      <section>
+      <section id="digests">
         <h2>Ops Notes</h2>
         <div class="notes" id="conversations"></div>
       </section>
-      <section>
+      <section id="briefs">
         <h2>Links & Deliverables</h2>
         <div class="list" id="deliverables"></div>
       </section>
     </div>
+    <section id="settings" style="background:var(--card);border:1px solid var(--border);border-radius:22px;padding:22px;margin-top:16px;box-shadow:0 10px 25px rgba(22,25,45,.06);">
+      <h2>Settings</h2>
+      <p style="color:var(--text-muted);font-size:.9rem;">Add your RapidScale contacts, Slack webhooks, and digest recipients here (coming soon).</p>
+    </section>
   </main>
 </div>
 
