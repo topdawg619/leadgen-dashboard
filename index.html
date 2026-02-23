@@ -36,7 +36,7 @@
     .kpi .label{font-size:.85rem;color:var(--text-muted);} 
     .kpi .value{font-size:2rem;font-weight:600;margin-top:6px;}
     .kpi small{font-size:.75rem;color:var(--purple);}
-    /* content-grid removed */
+    .leads-revenue-grid{display:grid;grid-template-columns:60% 40%;gap:20px;align-items:start;}
     section{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:22px;box-shadow:0 15px 35px rgba(22,25,45,.06);}
     section h2{font-size:1rem;margin-bottom:12px;}
     .leads-list{display:flex;flex-direction:column;gap:12px;}
@@ -53,7 +53,7 @@
     .list{display:flex;flex-direction:column;gap:10px;}
     .list-item{font-size:.9rem;color:var(--text-muted);}
     .list-item a{color:var(--purple);text-decoration:none;}
-    @media(max-width:960px){.app{grid-template-columns:1fr;}nav{flex-direction:row;overflow-x:auto;}nav ul{flex-direction:row;} .content-grid{grid-template-columns:1fr;}}
+    @media(max-width:960px){.app{grid-template-columns:1fr;}nav{flex-direction:row;overflow-x:auto;}nav ul{flex-direction:row;} .leads-revenue-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -81,14 +81,16 @@
 
     <div class="kpi-grid" id="stats"></div>
 
-    <section id="leads">
-      <h2>Open Leads</h2>
-      <div class="leads-list" id="leads"></div>
-    </section>
-    <section id="revenue-chart-section">
-      <h2>Estimated Revenue Potential</h2>
-      <canvas id="revenueChart" height="260"></canvas>
-    </section>
+    <div class="leads-revenue-grid">
+      <section id="leads">
+        <h2>Open Leads</h2>
+        <div class="leads-list" id="leads"></div>
+      </section>
+      <section id="revenue-chart-section">
+        <h2>Estimated Revenue Potential</h2>
+        <canvas id="revenueChart"></canvas>
+      </section>
+    </div>
     <section id="settings" style="background:var(--card);border:1px solid var(--border);border-radius:22px;padding:22px;margin-top:16px;box-shadow:0 10px 25px rgba(22,25,45,.06);">
       <h2>Settings</h2>
       <p style="color:var(--text-muted);font-size:.9rem;">Add your RapidScale contacts, Slack webhooks, and digest recipients here (coming soon).</p>
