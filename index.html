@@ -103,8 +103,7 @@
 const stats=[
   {label:'Signals queued',value:'38',trend:'+6 vs yesterday'},
   {label:'SEC filings parsed',value:'12',trend:'Last 24h'},
-  {label:'Change agents mapped',value:'7',trend:'Ready for outreach'},
-  {label:'Digest ETA',value:'7:00',trend:'Slack + Telegram'}
+  {label:'Date',value:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}),trend:new Date().toLocaleDateString('en-US',{weekday:'long'})}
 ];
 
 const openLeads=[
