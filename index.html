@@ -86,6 +86,10 @@
       <h2>Open Leads</h2>
       <div class="leads-list" id="leads"></div>
     </section>
+    <section id="revenue-chart-section">
+      <h2>Estimated Revenue Potential</h2>
+      <canvas id="revenueChart" height="260"></canvas>
+    </section>
     <section id="settings" style="background:var(--card);border:1px solid var(--border);border-radius:22px;padding:22px;margin-top:16px;box-shadow:0 10px 25px rgba(22,25,45,.06);">
       <h2>Settings</h2>
       <p style="color:var(--text-muted);font-size:.9rem;">Add your RapidScale contacts, Slack webhooks, and digest recipients here (coming soon).</p>
@@ -93,6 +97,7 @@
   </main>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>
 const stats=[
   {label:'Signals queued',value:'38',trend:'+6 vs yesterday'},
@@ -114,6 +119,43 @@ const leadsWrap=document.getElementById('leads');
 openLeads.forEach(lead=>{const div=document.createElement('div');div.className='lead-card';div.innerHTML=`<span class="tag">${lead.tag}</span><strong>${lead.company}</strong><p>${lead.summary}</p><p>${lead.cta}</p><a href="${lead.link}" target="_blank">View brief →</a>`;leadsWrap.appendChild(div);});
 
 document.getElementById('timestamp').textContent=new Date().toLocaleString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+
+/* --- Revenue Potential Bar Chart --- */
+const revenueData=[
+  {abbr:'Scripps',value:850,details:'Managed Cloud $320K · DRaaS $180K · Managed Security $200K · Compliance (HIPAA) $150K'},
+  {abbr:'M&T Bank',value:1200,details:'Managed Cloud $400K · FinOps $220K · DRaaS $200K · Security $230K · Compliance $150K'},
+  {abbr:'W. Alliance',value:650,details:'Managed Cloud $250K · DRaaS $140K · Security $160K · Compliance $100K'}
+];
+const ctx=document.getElementById('revenueChart').getContext('2d');
+new Chart(ctx,{
+  type:'bar',
+  data:{
+    labels:revenueData.map(d=>d.abbr),
+    datasets:[{
+      label:'Est. Annual Revenue ($K)',
+      data:revenueData.map(d=>d.value),
+      backgroundColor:['rgba(108,99,255,.75)','rgba(0,212,255,.75)','rgba(108,99,255,.45)'],
+      borderColor:['#6C63FF','#00D4FF','#6C63FF'],
+      borderWidth:2,
+      borderRadius:8,
+      barPercentage:.55
+    }]
+  },
+  options:{
+    responsive:true,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{
+        label:function(c){return ' $'+c.raw+'K ARR';},
+        afterLabel:function(c){return revenueData[c.dataIndex].details.split(' · ');}
+      }}
+    },
+    scales:{
+      y:{beginAtZero:true,position:'left',ticks:{callback:v=>'$'+v+'K'},grid:{color:'rgba(228,231,251,.6)'}},
+      x:{grid:{display:false}}
+    }
+  }
+});
 </script>
 </body>
 </html>
