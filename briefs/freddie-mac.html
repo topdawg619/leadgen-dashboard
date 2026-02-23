@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="brief-style.css"><title>CRO Brief — Freddie Mac</title></head>
+<body><div id="brief"></div>
+<script src="brief-template.js"></script>
+<script>
+renderBrief({
+  company: 'Federal Home Loan Mortgage Corp (Freddie Mac)',
+  date: 'February 22, 2026',
+  score: '6',
+  estRevenue: '$22+ Billion',
+  arrPotential: '$1.8M',
+  leadService: 'IaaS / DaaS + Compliance Management',
+  execSummary: `Freddie Mac is a $22B+ government-sponsored enterprise (GSE) that purchases, guarantees, and securitizes home mortgages — making it one of the most critical financial infrastructure entities in the United States. SEC filings reveal active digital transformation and legacy infrastructure migration signals. With a dedicated CIO (Frank Nazzaro) driving modernization, regulatory requirements from FHFA, and legacy systems supporting $3.5 trillion in mortgage securities, Freddie Mac represents the single largest revenue opportunity in the current pipeline. The combination of IaaS, DaaS, managed security, and compliance management creates a $1.8M ARR multi-service engagement.`,
+  profile: [
+    ['Company', 'Federal Home Loan Mortgage Corp (Freddie Mac)'],
+    ['Type', 'Government-Sponsored Enterprise (GSE)'],
+    ['Revenue', '$22+ billion (2024)'],
+    ['Employees', '~8,000'],
+    ['Headquarters', 'McLean, Virginia'],
+    ['Industry', 'Financial Services / Mortgage Securities'],
+    ['Portfolio', '$3.5 trillion in mortgage securities'],
+    ['Regulator', 'Federal Housing Finance Agency (FHFA)'],
+    ['Website', 'freddiemac.com'],
+    ['Conservatorship', 'Under FHFA conservatorship since 2008']
+  ],
+  whyHighValue: [
+    {title: 'Systemic Financial Importance', detail: 'Freddie Mac guarantees roughly 20% of all U.S. mortgages. Their infrastructure is not just enterprise IT — it\'s national financial infrastructure. Downtime or security breaches have systemic economic consequences, creating non-negotiable requirements for DR, security, and compliance.'},
+    {title: 'Active Digital Transformation', detail: 'SEC filings explicitly reference digital transformation and legacy infrastructure modernization. CIO Frank Nazzaro was appointed specifically to "deliver technology solutions that make us faster, smarter and more efficient." This is an active, funded initiative.'},
+    {title: 'Legacy On-Premises Infrastructure', detail: 'As a 50+ year old institution under government conservatorship, Freddie Mac carries significant legacy technical debt. Mainframe and on-prem systems supporting mortgage processing are prime migration candidates.'},
+    {title: 'FHFA Regulatory Requirements', detail: 'The Federal Housing Finance Agency imposes strict cybersecurity, data protection, and business continuity requirements. Managed security and compliance services directly address regulatory mandates.'},
+    {title: 'Government Procurement Alignment', detail: 'As a GSE, Freddie Mac follows structured procurement processes. RapidScale\'s FedRAMP-aligned capabilities and experience with regulated financial institutions align with their vendor requirements.'},
+    {title: 'Massive Scale', detail: 'At 8,000+ employees processing $3.5T in securities, even modest per-seat DaaS and per-workload IaaS pricing generates significant ARR.'}
+  ],
+  stakeholders: [
+    {name: 'Frank Nazzaro', title: 'Chief Information Officer', relevance: 'Appointed to lead technology modernization. Described as "the right person at the right moment" to drive transformation. Primary decision-maker for infrastructure.', linkedin: 'https://www.linkedin.com/in/franknazzaro/'},
+    {name: 'Michael DeVito', title: 'CEO', relevance: 'Ultimate authority on strategic vendor partnerships. CRO-level engagement target.', linkedin: ''},
+    {name: 'CISO (Research Required)', title: 'Chief Information Security Officer', relevance: 'Owns security architecture and compliance. Key technical stakeholder for SECaaS and IR.', linkedin: ''},
+    {name: 'VP Infrastructure / Cloud (Research Required)', title: 'Head of Cloud & Infrastructure', relevance: 'Technical evaluation owner for IaaS and DaaS workloads. Day-to-day decision maker.', linkedin: ''}
+  ],
+  whyCRO: 'This is a potential $1.8M ARR deal with a government-sponsored enterprise managing $3.5 trillion in mortgage securities. This is the definition of a CRO-level opportunity.',
+  croReasons: [
+    'Deal size: $1.8M ARR is likely the largest single opportunity in the pipeline. Requires CRO visibility, executive sponsorship, and strategic resource allocation.',
+    'National significance: Freddie Mac is systemically important financial infrastructure. Security or continuity failures have national economic implications.',
+    'Procurement complexity: GSE procurement involves structured RFP processes, compliance documentation, and multi-stakeholder approval chains. CRO must coordinate cross-functional resources.',
+    'Competitive intensity: At this deal size, every major MSP and cloud provider will compete. Only CRO-level executive relationships and strategic positioning will differentiate.',
+    'Reference account value: Winning Freddie Mac would be the most significant reference in RapidScale\'s portfolio — transformative for the financial services vertical.',
+    'Multi-year engagement: Infrastructure modernization of this scale is a 3-5 year relationship. CRO must ensure contract structure supports long-term partnership economics.'
+  ],
+  services: [
+    {name: 'Managed Cloud (IaaS)', application: 'Migrate legacy mortgage processing infrastructure to managed cloud', value: '$600,000'},
+    {name: 'Desktop as a Service (DaaS)', application: 'Virtual desktops for 8,000+ employees across multiple locations', value: '$400,000'},
+    {name: 'Managed Security (SECaaS)', application: 'SOC monitoring for mortgage data, PII, and financial records', value: '$400,000'},
+    {name: 'Compliance Management', application: 'FHFA requirements, SOC2, data residency, audit support', value: '$400,000'}
+  ],
+  sources: [
+    {type: 'SEC EDGAR', detail: 'Filings reference digital transformation, legacy infrastructure migration, and technology modernization'},
+    {type: 'Executive Appointment', detail: 'CIO Frank Nazzaro appointed to drive modernization — "right person at the right moment"'},
+    {type: 'Regulatory Analysis', detail: 'FHFA cybersecurity and business continuity mandates require managed security and DR capabilities'},
+    {type: 'Industry Context', detail: 'GSE modernization is a federal priority — bipartisan support for housing finance infrastructure improvement'}
+  ],
+  approach: [
+    {title: 'Regulatory-Led Introduction', detail: 'Lead with FHFA compliance and cybersecurity requirements. Position a complimentary FHFA compliance gap assessment focused on infrastructure resilience and DR posture.'},
+    {title: 'CIO Executive Briefing', detail: 'Secure a meeting with Frank Nazzaro through financial services industry connections. Present RapidScale\'s experience with regulated financial institutions and managed infrastructure at scale.'},
+    {title: 'CRO Strategic Partnership Proposal', detail: 'Develop a multi-year infrastructure modernization roadmap. Present to executive leadership as a strategic partnership — not a vendor transaction. Include phased migration plan with quick wins in Year 1.'}
+  ],
+  hook: '"Frank, Freddie Mac\'s mortgage infrastructure underpins 20% of American homeownership. Your modernization mandate is as much about national financial stability as it is about IT. We\'ve built managed infrastructure for regulated financial institutions at exactly this scale — let us show you what a 3-year modernization roadmap looks like with zero disruption to mortgage operations."'
+});
+</script></body></html>

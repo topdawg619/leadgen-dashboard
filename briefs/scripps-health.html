@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="brief-style.css"><title>CRO Brief — Scripps Health</title></head>
+<body><div id="brief"></div>
+<script src="brief-template.js"></script>
+<script>
+renderBrief({
+  company: 'Scripps Health',
+  date: 'February 22, 2026',
+  score: '7',
+  estRevenue: '$3.5 Billion',
+  arrPotential: '$850K',
+  leadService: 'SECaaS & Compliance (HIPAA/HITRUST)',
+  execSummary: `Scripps Health is a $3.5B non-profit integrated health system and one of San Diego's two dominant healthcare providers. They operate 5 hospital campuses, 30+ outpatient facilities, and employ ~15,000 staff. Critically, Scripps suffered a devastating $112.7 million ransomware attack in May 2021 that took all systems offline for nearly a month and compromised 1 million+ patient records. This institutional trauma — combined with their CIO being on Becker's "CIOs to Know 2025" list and an active EHR system replacement — creates an exceptionally qualified opportunity. Every IT decision at Scripps is filtered through the lens of "never again."`,
+  profile: [
+    ['Organization', 'Scripps Health'],
+    ['Type', 'Non-profit integrated health system'],
+    ['Revenue', '~$3.5 billion annually'],
+    ['Employees', '~15,000'],
+    ['Headquarters', 'San Diego, California'],
+    ['Hospitals', '5 campuses'],
+    ['Outpatient', '30+ locations across San Diego County'],
+    ['Beds', '~1,400+ staffed beds'],
+    ['CEO', 'Chris Van Gorder'],
+    ['CIO', 'Shane Thielman (Becker\'s CIOs to Know 2025)'],
+    ['Website', 'scripps.org']
+  ],
+  whyHighValue: [
+    {title: 'The $112.7 Million Ransomware Lesson', detail: 'In May 2021, Scripps suffered a catastrophic ransomware attack: all IT systems offline, paper records for a month, emergency patients diverted, 1M+ patient records compromised, $91.6M in lost revenue plus $21.1M in recovery costs. This isn\'t a theoretical risk conversation — Scripps lived it. Every infrastructure investment is now evaluated against "would this have prevented May 2021?"'},
+    {title: 'Active EHR System Replacement', detail: 'Scripps is replacing their ambulatory and inpatient EHR and revenue cycle management systems. Major EHR migrations require bulletproof DR, managed security, and compliance infrastructure — this is a once-in-a-decade buying window.'},
+    {title: 'San Diego Local Advantage', detail: 'Scripps is headquartered in San Diego — Chris Smith\'s home market. Local relationship building, in-person meetings, and community presence create significant competitive advantages over out-of-market vendors.'},
+    {title: 'CIO on National Recognition List', detail: 'Shane Thielman was named to Becker\'s "CIOs to Know 2025" — indicating active industry visibility and likely vendor evaluation. CIOs on these lists are typically in buying cycles.'},
+    {title: 'HIPAA Compliance Non-Negotiable', detail: 'Post-ransomware, Scripps\' HIPAA compliance posture is under intense scrutiny from HHS OCR. Managed security and compliance services aren\'t a cost center — they\'re legal and regulatory self-defense.'},
+    {title: 'Smart Implants and IoT', detail: 'Scripps\' investment in smart implants and connected medical devices creates new attack surfaces requiring specialized IoT security monitoring and network segmentation.'}
+  ],
+  stakeholders: [
+    {name: 'Shane Thielman', title: 'Chief Information Officer', relevance: 'Becker\'s CIOs to Know 2025. Leads all technology strategy. Personally experienced the 2021 ransomware recovery. Primary decision-maker.', linkedin: 'https://www.linkedin.com/in/shanethielman/'},
+    {name: 'Chris Van Gorder', title: 'President & CEO', relevance: 'Long-tenured CEO. Led the organization through the ransomware crisis. CRO-level engagement target for strategic partnership.', linkedin: ''},
+    {name: 'CISO (Research Required)', title: 'Chief Information Security Officer', relevance: 'Post-ransomware CISO likely has expanded authority and budget. Direct owner of security infrastructure decisions.', linkedin: ''},
+    {name: 'CFO', title: 'Chief Financial Officer', relevance: 'Recognized on Becker\'s CFOs to Know 2025. Budget authority — understands the $112.7M cost of inadequate security.', linkedin: ''}
+  ],
+  whyCRO: 'Scripps Health is a $3.5B health system in our home market that suffered a $112.7M ransomware attack. The combination of institutional trauma, active EHR migration, and local proximity makes this a must-win account that requires maximum CRO attention.',
+  croReasons: [
+    'Must-win local account: Scripps is in San Diego — RapidScale\'s home market. Losing this to a competitor would be a visible local defeat.',
+    'Institutional trauma creates urgency: Post-ransomware buying psychology means security and DR budgets have executive protection. This is a funded initiative.',
+    'EHR migration window: The EHR replacement creates a time-limited buying opportunity for supporting infrastructure. Missing this window means waiting 5-10 years.',
+    'Deal complexity: $850K ARR across security, compliance, managed cloud, and DR requires multi-service solution architecture and executive coordination.',
+    'Reference account significance: Winning one of San Diego\'s two dominant health systems creates a definitive local healthcare reference.',
+    'Competitive intensity: Healthcare IT vendors are aggressively pursuing post-ransomware Scripps. CRO must ensure RapidScale is in the consideration set early.'
+  ],
+  services: [
+    {name: 'Managed Cloud (IaaS)', application: 'Infrastructure supporting EHR migration and clinical systems', value: '$320,000'},
+    {name: 'DRaaS', application: 'Business continuity for hospital operations — "never again" narrative', value: '$180,000'},
+    {name: 'Managed Security (SECaaS)', application: 'SOC monitoring for PHI, medical devices, and IoT endpoints', value: '$200,000'},
+    {name: 'Compliance Management', application: 'HIPAA, HITRUST certification support, HHS OCR audit readiness', value: '$150,000'}
+  ],
+  sources: [
+    {type: 'Ransomware Impact', detail: 'May 2021 attack: $112.7M total cost, 1M+ patient records compromised, systems offline ~4 weeks'},
+    {type: 'Executive Intelligence', detail: 'CIO Shane Thielman — Becker\'s CIOs to Know 2025; CIO transition also underway (new CIO starting)'},
+    {type: 'Infrastructure Signals', detail: 'Active EHR replacement (ambulatory + inpatient) creating infrastructure demand'},
+    {type: 'Local Intelligence', detail: 'San Diego headquarters — home market advantage for relationship building'},
+    {type: 'Existing Brief', detail: 'Detailed Agentra target brief available with full attack timeline and stakeholder mapping'}
+  ],
+  approach: [
+    {title: 'Local Executive Introduction', detail: 'Leverage San Diego business community connections for a warm introduction to Shane Thielman. Lead with the ransomware recovery narrative — acknowledge their experience and position RapidScale as the infrastructure partner that ensures "never again."'},
+    {title: 'EHR Migration Infrastructure Assessment', detail: 'Propose a complimentary infrastructure readiness assessment for the EHR migration. This is a natural entry point that leads to managed cloud, DR, and security conversations.'},
+    {title: 'CRO-to-CEO Executive Meeting', detail: 'Arrange an executive meeting with Chris Van Gorder. He personally managed the ransomware crisis and understands infrastructure resilience at a visceral level. Position RapidScale as the local strategic technology partner.'}
+  ],
+  hook: '"Shane, what Scripps went through in May 2021 changed how every health system in America thinks about infrastructure resilience. As you\'re now replacing your EHR — the most critical system in the building — I want to make sure the infrastructure underneath it is built so that never happens again. We\'re local, we\'re specialized in healthcare, and we\'d love 30 minutes to show you what \'never again\' looks like architecturally."'
+});
+</script></body></html>

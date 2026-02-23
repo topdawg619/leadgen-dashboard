@@ -115,73 +115,81 @@ const openLeads=[
     company:'Broadridge Financial Solutions',
     score:6, tier:'warm',
     revenue:'$1.71B',
-    summary:'SEC filings mention cloud migration & digital transformation.',
+    summary:'SEC filings mention cloud migration & digital transformation. CTO Tyler Derr driving modernization.',
     service:'Managed Cloud (IaaS) — Active migration signals',
     tag:'Finance',
-    link:'https://seekingalpha.com/article/4865335-broadridge-financial-solutions-inc-br-q2-2026-earnings-call-transcript'
+    link:'https://seekingalpha.com/article/4865335-broadridge-financial-solutions-inc-br-q2-2026-earnings-call-transcript',
+    brief:'briefs/broadridge.html'
   },
   {
     company:'Cincinnati Financial',
     score:6, tier:'warm',
     revenue:'$3.09B',
-    summary:'SEC filing mentions disaster recovery & digital transformation. Insurance vertical.',
-    service:'DRaaS — DR mentions signal business continuity investment',
+    summary:'SEC filing mentions DR & digital transformation. Insurance vertical — IR Readiness dual play.',
+    service:'DRaaS + IR Readiness — Insurer paradox play',
     tag:'Insurance',
-    link:'https://www.insurancebusinessmag.com/us/news/breaking-news/cincinnati-financial-earnings-rise-amid-investment-gains-564884.aspx'
+    link:'https://www.insurancebusinessmag.com/us/news/breaking-news/cincinnati-financial-earnings-rise-amid-investment-gains-564884.aspx',
+    brief:'briefs/cincinnati-financial.html'
   },
   {
     company:'8x8 Inc',
     score:6, tier:'warm',
     revenue:'$185M',
-    summary:'SEC filings reference legacy on-prem infrastructure & cloud transition.',
+    summary:'SEC filings reference legacy on-prem infrastructure. Cloud company that needs cloud help.',
     service:'IaaS / DaaS — Hardware refresh → OpEx cloud play',
     tag:'UCaaS/Tech',
-    link:'https://www.investing.com/news/insider-trading-news/laurence-denny-8x8-chief-legal-officer-sells-12731-in-shares-93CH-4512659'
+    link:'https://www.investing.com/news/insider-trading-news/laurence-denny-8x8-chief-legal-officer-sells-12731-in-shares-93CH-4512659',
+    brief:'briefs/8x8.html'
   },
   {
     company:'Federal Home Loan Mortgage Corp (Freddie Mac)',
     score:6, tier:'warm',
     revenue:'$22B+',
-    summary:'SEC filing signals digital transformation & legacy infrastructure migration. Financial services.',
-    service:'IaaS / DaaS — Legacy migration for financial services',
+    summary:'SEC filing signals digital transformation & legacy migration. CIO Frank Nazzaro driving modernization. $3.5T in mortgage securities.',
+    service:'IaaS / DaaS + Compliance — National financial infrastructure',
     tag:'Financial Services',
-    link:'https://en.wikipedia.org/wiki/Freddie_Mac'
+    link:'https://en.wikipedia.org/wiki/Freddie_Mac',
+    brief:'briefs/freddie-mac.html'
   },
   {
     company:'Cognizant Technology Solutions',
     score:6, tier:'warm',
     revenue:'$21.1B',
-    summary:'SEC filing mentions digital transformation. Healthcare vertical alignment.',
-    service:'Managed Cloud (IaaS) — Enterprise cloud infrastructure',
+    summary:'SEC filing mentions digital transformation. Healthcare vertical. AI-first pivot needs infrastructure.',
+    service:'Managed Cloud (IaaS) + Healthcare Compliance',
     tag:'Healthcare/IT',
-    link:'https://en.wikipedia.org/wiki/Cognizant'
+    link:'https://en.wikipedia.org/wiki/Cognizant',
+    brief:'briefs/cognizant.html'
   },
   {
     company:'M&T Bank',
     score:6, tier:'warm',
     revenue:'$2.48B',
-    summary:'Dual CIO structure + SEC cloud migration notes. Existing brief available.',
-    service:'Managed Public Cloud (FinOps) — Multi-cloud optimization',
+    summary:'Dual CIO structure + SEC cloud migration. Post-acquisition infrastructure complexity (People\'s United).',
+    service:'Managed Public Cloud (FinOps) — Post-merger optimization',
     tag:'Banking',
-    link:'https://www.notion.so/RapidScale-M-T-Bank-Brief-30f6e865384f81c18168ca2ff94c0b16'
+    link:'https://www.notion.so/RapidScale-M-T-Bank-Brief-30f6e865384f81c18168ca2ff94c0b16',
+    brief:'briefs/mt-bank.html'
   },
   {
     company:'Scripps Health',
     score:7, tier:'warm',
     revenue:'$3.5B',
-    summary:'Audit window + smart implants highlight risk narrative. HIPAA compliance play.',
-    service:'SECaaS & Compliance — HIPAA/HITRUST for healthcare',
+    summary:'$112.7M ransomware survivor. Active EHR replacement. CIO on Becker\'s 2025 list. San Diego local.',
+    service:'SECaaS & Compliance — HIPAA/HITRUST + "Never Again"',
     tag:'Healthcare',
-    link:'https://www.notion.so/RapidScale-Scripps-Health-Brief-30f6e865384f81269007ce1f762dae59'
+    link:'https://www.notion.so/RapidScale-Scripps-Health-Brief-30f6e865384f81269007ce1f762dae59',
+    brief:'briefs/scripps-health.html'
   },
   {
     company:'Western Alliance Bank',
     score:6, tier:'warm',
     revenue:'$2.3B',
-    summary:'Torrey Pines adjacency + board cyber refresh. Local relationship opportunity.',
-    service:'Incident Response Readiness (IR) — Cyber insurance hook',
+    summary:'Board-level cyber refresh. Torrey Pines local presence. 2026 IR Readiness hook.',
+    service:'Incident Response Readiness (IR) — Cyber insurance + board mandate',
     tag:'Banking',
-    link:'https://www.notion.so/RapidScale-Western-Alliance-Brief-30f6e865384f81b5ae90fd7cec835e59'
+    link:'https://www.notion.so/RapidScale-Western-Alliance-Brief-30f6e865384f81b5ae90fd7cec835e59',
+    brief:'briefs/western-alliance.html'
   }
 ];
 
@@ -205,7 +213,10 @@ openLeads.forEach(lead=>{
     <span class="revenue-badge">💰 ${lead.revenue}</span>
     <p style="font-size:.88rem;">${lead.summary}</p>
     <p class="service">🎯 ${lead.service}</p>
-    <a href="${lead.link}" target="_blank">View details →</a>`;
+    <div style="display:flex;gap:12px;margin-top:4px;">
+      <a href="${lead.link}" target="_blank">View details →</a>
+      ${lead.brief?`<a href="${lead.brief}" target="_blank" style="background:var(--purple);color:#fff;padding:4px 14px;border-radius:8px;font-size:.82rem;font-weight:600;text-decoration:none;">📄 CRO Brief</a>`:''}
+    </div>`;
   leadsWrap.appendChild(div);
 });
 

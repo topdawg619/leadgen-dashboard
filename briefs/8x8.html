@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="brief-style.css"><title>CRO Brief — 8x8 Inc</title></head>
+<body><div id="brief"></div>
+<script src="brief-template.js"></script>
+<script>
+renderBrief({
+  company: '8x8, Inc.',
+  date: 'February 22, 2026',
+  score: '6',
+  estRevenue: '$185 Million',
+  arrPotential: '$320K',
+  leadService: 'IaaS / Desktop as a Service (DaaS)',
+  execSummary: `8x8, Inc. (NASDAQ: EGHT) is a $185M cloud communications and customer experience platform provider. Despite being a cloud-native company for its products, SEC filings reveal significant legacy on-premises infrastructure supporting internal operations and legacy platform components. Two separate filings reference infrastructure modernization and cloud transition, indicating an active hardware refresh cycle. This represents a classic DaaS + IaaS migration play — helping a cloud company move its own internal infrastructure to the cloud.`,
+  profile: [
+    ['Company', '8x8, Inc.'],
+    ['Ticker', 'NASDAQ: EGHT'],
+    ['Revenue', '$185.1 million (FY2025)'],
+    ['Employees', '~2,300'],
+    ['Headquarters', 'Campbell, California'],
+    ['Industry', 'Cloud Communications / UCaaS / CCaaS'],
+    ['Customers', '3M+ business users globally'],
+    ['Website', '8x8.com'],
+    ['Founded', '1987']
+  ],
+  whyHighValue: [
+    {title: 'Legacy Infrastructure Despite Cloud Products', detail: '8x8 sells cloud communications but still runs internal operations on legacy on-premises infrastructure. SEC filings reference infrastructure modernization and cloud transition — a textbook "cobbler\'s children" scenario where a cloud company needs help migrating its own systems.'},
+    {title: 'Dual SEC Filing Signals', detail: 'Two separate SEC filings flag cloud migration and legacy infrastructure concerns. Multiple filings = sustained initiative, not a one-time mention. This indicates ongoing budget allocation.'},
+    {title: 'Hardware Refresh Window', detail: 'On-prem infrastructure references suggest aging hardware approaching end-of-life. Hardware refresh cycles are the single highest-conversion trigger for IaaS and DaaS adoption — the business case writes itself (CapEx → OpEx).'},
+    {title: 'UCaaS Industry Knowledge', detail: '8x8 understands cloud economics intimately from their product side. They will appreciate a sophisticated managed cloud proposal that speaks their language — SLAs, uptime guarantees, and TCO modeling.'},
+    {title: 'Mid-Market Sweet Spot', detail: 'At $185M revenue and ~2,300 employees, 8x8 is in RapidScale\'s sweet spot — large enough for meaningful ARR, small enough that a managed provider is more cost-effective than building a full internal cloud ops team.'}
+  ],
+  stakeholders: [
+    {name: 'Samuel Wilson', title: 'CEO', relevance: 'Joined 2023. Driving operational efficiency and platform consolidation. Key for strategic partnership conversations.', linkedin: 'https://www.linkedin.com/in/samuelcwilson/'},
+    {name: 'Kevin Kraus', title: 'CFO', relevance: 'CapEx to OpEx conversion narrative is a CFO conversation. Key for TCO and FinOps discussions.', linkedin: ''},
+    {name: 'Bryan Martin', title: 'Chairman & Former CTO', relevance: 'Founded the company. Still influential in technology direction. Understands infrastructure intimately.', linkedin: 'https://www.linkedin.com/in/bryanmartin8x8/'},
+    {name: 'VP of IT / Infrastructure (Research Required)', title: 'Head of Internal IT', relevance: 'Direct owner of internal infrastructure decisions. Technical evaluation lead.', linkedin: ''}
+  ],
+  whyCRO: '8x8 is a public company with a $320K ARR opportunity that requires navigating both technical and financial stakeholders. The "cloud company that needs cloud help" narrative requires careful positioning at the executive level.',
+  croReasons: [
+    'Sensitive messaging: Telling a cloud company they need cloud help requires executive-level finesse and positioning.',
+    'CFO engagement critical: The CapEx → OpEx narrative is the primary business case driver — requires CRO coordination with finance.',
+    'Competitive risk: 8x8 has deep cloud vendor relationships (AWS, Azure) and could attempt self-managed migration. CRO-level value proposition differentiation is essential.',
+    'Reference account potential: A UCaaS company choosing RapidScale for its own infrastructure is a powerful "even cloud companies trust us" case study.',
+    'Timing sensitivity: Hardware refresh windows are finite — CRO must ensure sales velocity matches the decision timeline.'
+  ],
+  services: [
+    {name: 'IaaS', application: 'Migrate legacy on-prem internal infrastructure to managed cloud', value: '$150,000'},
+    {name: 'Desktop as a Service (DaaS)', application: 'Virtual desktops for distributed workforce (~2,300 employees)', value: '$100,000'},
+    {name: 'Managed Security', application: 'Security monitoring for internal systems and customer data', value: '$70,000'}
+  ],
+  sources: [
+    {type: 'SEC EDGAR', detail: 'Two separate filings reference legacy infrastructure, cloud migration, and on-premises systems (2025-2026)'},
+    {type: 'Executive Research', detail: 'New CEO Samuel Wilson (2023) driving operational efficiency mandate'},
+    {type: 'Industry Analysis', detail: 'UCaaS market consolidation pressuring operational cost reduction'},
+    {type: 'Technology Detection', detail: 'On-premises infrastructure indicators in SEC disclosures'}
+  ],
+  approach: [
+    {title: 'Peer Conversation', detail: 'Position as a peer-level technology conversation: "We help cloud companies like you focus on your product while we handle the infrastructure." Appeal to their cloud-native identity.'},
+    {title: 'TCO Workshop', detail: 'Propose a complimentary TCO analysis comparing current on-prem costs vs. managed IaaS + DaaS. With 8x8\'s cloud expertise, they\'ll appreciate rigorous financial modeling.'},
+    {title: 'CEO Strategic Alignment', detail: 'Connect with Samuel Wilson on operational efficiency. Position managed infrastructure as a way to redirect internal IT resources toward product innovation.'}
+  ],
+  hook: '"Samuel, 8x8 helps millions of businesses communicate in the cloud — but your SEC filings suggest your own internal infrastructure is still catching up. We specialize in exactly this transition. Can we show you how other tech companies have made this move in 90 days?"'
+});
+</script></body></html>
