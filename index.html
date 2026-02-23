@@ -14,6 +14,7 @@
       --card:#fff;
       --purple:#6C63FF;
       --blue:#00D4FF;
+      --green:#2ecc71;
       --text-dark:#16192d;
       --text-muted:#8c93b3;
       --border:#e4e7fb;
@@ -31,9 +32,9 @@
     header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
     header h1{font-family:'Space Grotesk';font-size:1.8rem;}
     header .meta{color:var(--text-muted);font-size:.9rem;}
-    .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+    .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
     .kpi{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 10px 25px rgba(22,25,45,.08);}
-    .kpi .label{font-size:.85rem;color:var(--text-muted);} 
+    .kpi .label{font-size:.85rem;color:var(--text-muted);}
     .kpi .value{font-size:2rem;font-weight:600;margin-top:6px;}
     .kpi small{font-size:.75rem;color:var(--purple);}
     .leads-revenue-grid{display:grid;grid-template-columns:60% 40%;gap:20px;align-items:start;}
@@ -41,40 +42,33 @@
     section h2{font-size:1rem;margin-bottom:12px;}
     .leads-list{display:flex;flex-direction:column;gap:12px;}
     .lead-card{border:1px solid var(--border);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:6px;}
-    .lead-card span.tag{font-size:.75rem;color:#fff;background:var(--purple);padding:2px 10px;border-radius:999px;width:max-content;}
+    .lead-card span.tag{font-size:.75rem;color:#fff;padding:2px 10px;border-radius:999px;width:max-content;}
+    .lead-card span.tag.hot{background:#e74c3c;}
+    .lead-card span.tag.warm{background:var(--purple);}
+    .lead-card .score{font-size:.75rem;color:var(--text-muted);font-weight:600;}
+    .lead-card .service{font-size:.8rem;color:var(--green);margin-top:2px;}
+    .lead-card .revenue-badge{font-size:.75rem;color:var(--blue);font-weight:500;}
     .lead-card a{font-size:.85rem;color:var(--purple);text-decoration:none;}
-    .workflow{display:flex;flex-direction:column;gap:12px;font-size:.92rem;color:var(--text-muted);}
-    .workflow div{display:flex;gap:10px;align-items:flex-start;}
-    .workflow div span{font-weight:600;color:var(--text-dark);} 
-    .notes{display:flex;flex-direction:column;gap:12px;font-size:.9rem;}
-    .note-item{border-bottom:1px solid var(--border);padding-bottom:10px;}
-    .note-item:last-child{border:none;padding-bottom:0;}
-    .note-item .time{font-size:.75rem;color:var(--text-muted);}
-    .list{display:flex;flex-direction:column;gap:10px;}
-    .list-item{font-size:.9rem;color:var(--text-muted);}
-    .list-item a{color:var(--purple);text-decoration:none;}
     @media(max-width:960px){.app{grid-template-columns:1fr;}nav{flex-direction:row;overflow-x:auto;}nav ul{flex-direction:row;} .leads-revenue-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
 <div class="app">
   <nav>
-    <div class="logo">
-      RapidScale Leads
-    </div>
+    <div class="logo">RapidScale Leads</div>
     <ul class="nav-links">
       <a href="#dashboard"><span class="icon">🏠</span>Dashboard</a>
       <a href="#leads"><span class="icon">🧲</span>Leads</a>
       <a href="#briefs"><span class="icon">📑</span>Briefs</a>
       <a href="#settings"><span class="icon">⚙️</span>Settings</a>
-</ul>
+    </ul>
   </nav>
 
   <main class="main" id="dashboard">
     <header>
       <div>
         <h1>RapidScale LeadGen Command Center</h1>
-        <div class="meta">Lead routing for RapidScale enterprise targets</div>
+        <div class="meta">Lead routing for RapidScale enterprise targets · Scoring: 1-10 rubric · Min report: 6+</div>
       </div>
       <div class="meta">Updated <span id="timestamp"></span></div>
     </header>
@@ -82,8 +76,8 @@
     <div class="kpi-grid" id="stats"></div>
 
     <div class="leads-revenue-grid">
-      <section id="leads">
-        <h2>Open Leads</h2>
+      <section id="leads-section">
+        <h2>Qualified Leads (Score 6+)</h2>
         <div class="leads-list" id="leads"></div>
       </section>
       <section id="revenue-chart-section">
@@ -91,6 +85,7 @@
         <canvas id="revenueChart"></canvas>
       </section>
     </div>
+
     <section id="contacts">
       <h2>Contacts</h2>
       <div style="display:flex;gap:20px;flex-wrap:wrap;">
@@ -105,32 +100,135 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>
+/* === KPI Stats === */
 const stats=[
-  {label:'Signals queued',value:'38',trend:'+6 vs yesterday'},
-  {label:'SEC filings parsed',value:'12',trend:'Last 24h'},
+  {label:'Signals Tracked',value:'169',trend:'From 4 sources'},
+  {label:'Companies Scored',value:'142',trend:'1-10 rubric'},
+  {label:'SEC Filings Parsed',value:'58',trend:'Last 30 days'},
+  {label:'Qualified Leads',value:'5',trend:'Score 6+ only'},
   {label:'Date',value:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}),trend:new Date().toLocaleDateString('en-US',{weekday:'long'})}
 ];
 
+/* === Qualified Leads (Score 6+, from live DB run 2026-02-22) === */
 const openLeads=[
-  {company:'Scripps Health',summary:'Audit window + smart implants highlight risk narrative.',cta:'Position audit-ready orchestration for Shane Thielman (CIO).',tag:'Health',link:'https://www.notion.so/RapidScale-Scripps-Health-Brief-30f6e865384f81269007ce1f762dae59'},
-  {company:'M&T Bank',summary:'Dual CIO structure + SEC cloud migration notes.',cta:'Lead with FinOps guardrails for Tom Rice / Linda Tai.',tag:'Finance',link:'https://www.notion.so/RapidScale-M-T-Bank-Brief-30f6e865384f81c18168ca2ff94c0b16'},
-  {company:'Western Alliance',summary:'Torrey Pines adjacency + board cyber refresh.',cta:'Activate local relationship, deliver CRO-ready brief.',tag:'Banking',link:'https://www.notion.so/RapidScale-Western-Alliance-Brief-30f6e865384f81b5ae90fd7cec835e59'}
+  {
+    company:'Broadridge Financial Solutions',
+    score:6, tier:'warm',
+    revenue:'$1.71B',
+    summary:'SEC filings mention cloud migration & digital transformation.',
+    service:'Managed Cloud (IaaS) — Active migration signals',
+    tag:'Finance',
+    link:'https://seekingalpha.com/article/4865335-broadridge-financial-solutions-inc-br-q2-2026-earnings-call-transcript'
+  },
+  {
+    company:'Cincinnati Financial',
+    score:6, tier:'warm',
+    revenue:'$3.09B',
+    summary:'SEC filing mentions disaster recovery & digital transformation. Insurance vertical.',
+    service:'DRaaS — DR mentions signal business continuity investment',
+    tag:'Insurance',
+    link:'https://www.insurancebusinessmag.com/us/news/breaking-news/cincinnati-financial-earnings-rise-amid-investment-gains-564884.aspx'
+  },
+  {
+    company:'8x8 Inc',
+    score:6, tier:'warm',
+    revenue:'$185M',
+    summary:'SEC filings reference legacy on-prem infrastructure & cloud transition.',
+    service:'IaaS / DaaS — Hardware refresh → OpEx cloud play',
+    tag:'UCaaS/Tech',
+    link:'https://www.investing.com/news/insider-trading-news/laurence-denny-8x8-chief-legal-officer-sells-12731-in-shares-93CH-4512659'
+  },
+  {
+    company:'Federal Home Loan Mortgage Corp (Freddie Mac)',
+    score:6, tier:'warm',
+    revenue:'$22B+',
+    summary:'SEC filing signals digital transformation & legacy infrastructure migration. Financial services.',
+    service:'IaaS / DaaS — Legacy migration for financial services',
+    tag:'Financial Services',
+    link:'https://en.wikipedia.org/wiki/Freddie_Mac'
+  },
+  {
+    company:'Cognizant Technology Solutions',
+    score:6, tier:'warm',
+    revenue:'$21.1B',
+    summary:'SEC filing mentions digital transformation. Healthcare vertical alignment.',
+    service:'Managed Cloud (IaaS) — Enterprise cloud infrastructure',
+    tag:'Healthcare/IT',
+    link:'https://en.wikipedia.org/wiki/Cognizant'
+  },
+  {
+    company:'M&T Bank',
+    score:6, tier:'warm',
+    revenue:'$2.48B',
+    summary:'Dual CIO structure + SEC cloud migration notes. Existing brief available.',
+    service:'Managed Public Cloud (FinOps) — Multi-cloud optimization',
+    tag:'Banking',
+    link:'https://www.notion.so/RapidScale-M-T-Bank-Brief-30f6e865384f81c18168ca2ff94c0b16'
+  },
+  {
+    company:'Scripps Health',
+    score:7, tier:'warm',
+    revenue:'$3.5B',
+    summary:'Audit window + smart implants highlight risk narrative. HIPAA compliance play.',
+    service:'SECaaS & Compliance — HIPAA/HITRUST for healthcare',
+    tag:'Healthcare',
+    link:'https://www.notion.so/RapidScale-Scripps-Health-Brief-30f6e865384f81269007ce1f762dae59'
+  },
+  {
+    company:'Western Alliance Bank',
+    score:6, tier:'warm',
+    revenue:'$2.3B',
+    summary:'Torrey Pines adjacency + board cyber refresh. Local relationship opportunity.',
+    service:'Incident Response Readiness (IR) — Cyber insurance hook',
+    tag:'Banking',
+    link:'https://www.notion.so/RapidScale-Western-Alliance-Brief-30f6e865384f81b5ae90fd7cec835e59'
+  }
 ];
+
+/* Sort by score descending */
+openLeads.sort((a,b)=>b.score-a.score);
 
 const statsWrap=document.getElementById('stats');
 stats.forEach(s=>{const card=document.createElement('div');card.className='kpi';card.innerHTML=`<div class="label">${s.label}</div><div class="value">${s.value}</div><small>${s.trend}</small>`;statsWrap.appendChild(card);});
 
 const leadsWrap=document.getElementById('leads');
-openLeads.forEach(lead=>{const div=document.createElement('div');div.className='lead-card';div.innerHTML=`<span class="tag">${lead.tag}</span><strong>${lead.company}</strong><p>${lead.summary}</p><p>${lead.cta}</p><a href="${lead.link}" target="_blank">View brief →</a>`;leadsWrap.appendChild(div);});
+openLeads.forEach(lead=>{
+  const div=document.createElement('div');
+  div.className='lead-card';
+  const tierClass=lead.score>=8?'hot':'warm';
+  div.innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span class="tag ${tierClass}">${lead.tag}</span>
+      <span class="score">${lead.score}/10</span>
+    </div>
+    <strong>${lead.company}</strong>
+    <span class="revenue-badge">💰 ${lead.revenue}</span>
+    <p style="font-size:.88rem;">${lead.summary}</p>
+    <p class="service">🎯 ${lead.service}</p>
+    <a href="${lead.link}" target="_blank">View details →</a>`;
+  leadsWrap.appendChild(div);
+});
 
 document.getElementById('timestamp').textContent=new Date().toLocaleString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
 
-/* --- Revenue Potential Bar Chart --- */
+/* === Revenue Potential Bar Chart === */
 const revenueData=[
-  {abbr:'Scripps',value:850,details:'Managed Cloud $320K · DRaaS $180K · Managed Security $200K · Compliance (HIPAA) $150K'},
-  {abbr:'M&T Bank',value:1200,details:'Managed Cloud $400K · FinOps $220K · DRaaS $200K · Security $230K · Compliance $150K'},
-  {abbr:'W. Alliance',value:650,details:'Managed Cloud $250K · DRaaS $140K · Security $160K · Compliance $100K'}
+  {abbr:'Broadridge',value:480,details:'Managed Cloud $220K · DRaaS $120K · Security $140K'},
+  {abbr:'Cincinnati',value:720,details:'DRaaS $250K · Managed Cloud $200K · Security $170K · Compliance $100K'},
+  {abbr:'8x8',value:320,details:'IaaS $150K · DaaS $100K · Security $70K'},
+  {abbr:'Freddie Mac',value:1800,details:'Managed Cloud $600K · DaaS $400K · Security $400K · Compliance $400K'},
+  {abbr:'Cognizant',value:950,details:'Managed Cloud $400K · DRaaS $200K · Security $200K · Compliance $150K'},
+  {abbr:'M&T Bank',value:1200,details:'FinOps $350K · Managed Cloud $350K · Security $300K · Compliance $200K'},
+  {abbr:'Scripps',value:850,details:'Managed Cloud $320K · DRaaS $180K · Security $200K · HIPAA $150K'},
+  {abbr:'W. Alliance',value:650,details:'IR Readiness $150K · Security $200K · Managed Cloud $200K · Compliance $100K'}
 ];
+revenueData.sort((a,b)=>b.value-a.value);
+
+const colors=revenueData.map((_,i)=>{
+  const palette=['rgba(108,99,255,.8)','rgba(0,212,255,.8)','rgba(46,204,113,.7)','rgba(108,99,255,.6)','rgba(0,212,255,.6)','rgba(46,204,113,.5)','rgba(108,99,255,.45)','rgba(0,212,255,.45)'];
+  return palette[i%palette.length];
+});
+
 const ctx=document.getElementById('revenueChart').getContext('2d');
 new Chart(ctx,{
   type:'bar',
@@ -139,15 +237,16 @@ new Chart(ctx,{
     datasets:[{
       label:'Est. Annual Revenue ($K)',
       data:revenueData.map(d=>d.value),
-      backgroundColor:['rgba(108,99,255,.75)','rgba(0,212,255,.75)','rgba(108,99,255,.45)'],
-      borderColor:['#6C63FF','#00D4FF','#6C63FF'],
+      backgroundColor:colors,
+      borderColor:colors.map(c=>c.replace(/[\d.]+\)$/,'1)')),
       borderWidth:2,
       borderRadius:8,
-      barPercentage:.55
+      barPercentage:.65
     }]
   },
   options:{
     responsive:true,
+    indexAxis:'y',
     plugins:{
       legend:{display:false},
       tooltip:{callbacks:{
@@ -156,8 +255,8 @@ new Chart(ctx,{
       }}
     },
     scales:{
-      y:{beginAtZero:true,position:'left',ticks:{callback:v=>'$'+v+'K'},grid:{color:'rgba(228,231,251,.6)'}},
-      x:{grid:{display:false}}
+      x:{beginAtZero:true,ticks:{callback:v=>'$'+v+'K'},grid:{color:'rgba(228,231,251,.6)'}},
+      y:{grid:{display:false}}
     }
   }
 });
