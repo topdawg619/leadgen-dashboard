@@ -66,7 +66,6 @@
     <ul class="nav-links">
       <a href="#dashboard"><span class="icon">🏠</span>Dashboard</a>
       <a href="#leads"><span class="icon">🧲</span>Leads</a>
-      <a href="#digests"><span class="icon">📨</span>Digests</a>
       <a href="#briefs"><span class="icon">📑</span>Briefs</a>
       <a href="#settings"><span class="icon">⚙️</span>Settings</a>
 </ul>
@@ -87,17 +86,6 @@
       <section id="leads">
         <h2>Open Leads</h2>
         <div class="leads-list" id="leads"></div>
-      </section>
-      <section>
-        <h2>Workflow</h2>
-        <div class="workflow" id="workflow"></div>
-      </section>
-    </div>
-
-    <div class="content-grid">
-      <section id="digests">
-        <h2>Ops Notes</h2>
-        <div class="notes" id="conversations"></div>
       </section>
       <section id="briefs">
         <h2>Links & Deliverables</h2>
@@ -125,21 +113,6 @@ const openLeads=[
   {company:'Western Alliance',summary:'Torrey Pines adjacency + board cyber refresh.',cta:'Activate local relationship, deliver CRO-ready brief.',tag:'Banking',link:'https://www.notion.so/RapidScale-Western-Alliance-Brief-30f6e865384f81b5ae90fd7cec835e59'}
 ];
 
-const workflowSteps=[
-  {step:'01',title:'Signal Intake',desc:'Brave News + SEC EDGAR + jobs collectors pull $25M+ ARR targets every 4h.'},
-  {step:'02',title:'Enrichment',desc:'Sid agents apply compliance / leadership / initiative scoring rubric.'},
-  {step:'03',title:'Change Agent',desc:'LinkedIn + press intelligence to surface sponsor, quotes, CTA hooks.'},
-  {step:'04',title:'Digest',desc:'Top 3 opportunities ship to Slack + Telegram at 7AM with CTA + citations.'}
-];
-
-const conversations=[
-  {time:'06:05',title:'Research resumed',body:'Knowledge Search fix landed; cron research restarted.'},
-  {time:'04:46',title:'BGE path hard-wired',body:'Knowledge Search now loads reliably on hotel Wi-Fi.'},
-  {time:'22:05',title:'Knowledge Search live',body:'Vector search over vault powering briefs.'},
-  {time:'18:31',title:'Flight tracker request',body:'SLC trip tracker needed to keep context on the go.'},
-  {time:'17:30',title:'Lead pipeline briefing',body:'$4.7M modeled MRR this week; SEC focus remains top priority.'}
-];
-
 const deliverables=[
   {label:'LeadGen repo',link:'https://github.com/topdawg619/lead-gen'},
   {label:'Lead digest template',link:'https://topdawg619.github.io/leadgen-dashboard/'},
@@ -152,12 +125,6 @@ stats.forEach(s=>{const card=document.createElement('div');card.className='kpi';
 
 const leadsWrap=document.getElementById('leads');
 openLeads.forEach(lead=>{const div=document.createElement('div');div.className='lead-card';div.innerHTML=`<span class="tag">${lead.tag}</span><strong>${lead.company}</strong><p>${lead.summary}</p><p>${lead.cta}</p><a href="${lead.link}" target="_blank">View brief →</a>`;leadsWrap.appendChild(div);});
-
-const workflowWrap=document.getElementById('workflow');
-workflowSteps.forEach(step=>{const div=document.createElement('div');div.innerHTML=`<span>${step.step}</span><div><strong>${step.title}</strong><p>${step.desc}</p></div>`;workflowWrap.appendChild(div);});
-
-const noteWrap=document.getElementById('conversations');
-conversations.forEach(note=>{const div=document.createElement('div');div.className='note-item';div.innerHTML=`<div class="time">${note.time} PT</div><div class="title"><strong>${note.title}</strong></div><div>${note.body}</div>`;noteWrap.appendChild(div);});
 
 const linkWrap=document.getElementById('deliverables');
 deliverables.forEach(item=>{const div=document.createElement('div');div.className='list-item';div.innerHTML=`<a href="${item.link}" target="_blank">${item.label}</a>`;linkWrap.appendChild(div);});
